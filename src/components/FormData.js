@@ -3,6 +3,7 @@ import React, { Component, useEffect, useState } from 'react';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import { SMTPClient } from 'emailjs';
 
 import Employee from './style';
 
@@ -50,7 +51,10 @@ function FormData() {
 
     const clear_data = () => {
 
-        const delete_data = {
+        const ok =confirm("you want clear data")
+
+        if(ok){
+            const delete_data = {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -65,6 +69,7 @@ function FormData() {
                 setTimeout(window.location.reload(), 1000)
             }
         })
+        }
 
     }
 
