@@ -3,12 +3,15 @@ import React, { Component, useEffect, useState } from 'react';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { SMTPClient } from 'emailjs';
+import emailjs from 'emailjs-com';
 
 import Employee from './style';
 
 import { Link } from 'react-router-dom';
 function FormData() {
+
+
+
 
     const [data, setData] = useState([])
     const [absetData, setaAbsetData] = useState()
@@ -19,10 +22,6 @@ function FormData() {
     const [propId, setPropId] = useState()
     const [Status, setStatus] = useState()
     const [Reason, setReason] = useState()
-
-
-
-
 
 
     const date = new Date();
@@ -49,26 +48,35 @@ function FormData() {
 
 
 
+
+    const email = () => {
+
+        alert("p")
+        const subject = "user data employee"
+        const body = data
+        window.location.href = `mailto:mtrsecondary@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
     const clear_data = () => {
 
-        const ok =confirm("you want clear data")
+        const ok = confirm("you want clear data")
 
-        if(ok){
+        if (ok) {
             const delete_data = {
-            method: "DELETE",
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
             }
-        }
 
-        for (var i = 0; i < data.length; i++) {
-            fetch(`https://6502bc67a0f2c1f3faeac85b.mockapi.io/talk/${i + 1}`, delete_data)
-        }
-        toast.success("deleted", {
-            autoClose: 1000, onClose: () => {
-                setTimeout(window.location.reload(), 1000)
+            for (var i = 0; i < data.length; i++) {
+                fetch(`https://6502bc67a0f2c1f3faeac85b.mockapi.io/talk/${data[i].id}`, delete_data)
             }
-        })
+            toast.success("deleted", {
+                autoClose: 1000, onClose: () => {
+                    setTimeout(window.location.reload(), 1000)
+                }
+            })
         }
 
     }
@@ -198,7 +206,7 @@ function FormData() {
                         <button className='btn btn-warning text-capitalize' data-bs-toggle="collapse" data-bs-target="#collapseExample">unregistered</button>
                     </div>
                     <div className="col-sm-auto">
-                        <button className='btn btn-success px-5' onClick={() => { setShow(!show) }}>EDIT</button>
+                        <button className='btn btn-success px-5' onClick={() => { setShow(!show) }}>{show ?'UPDATE' :'EDIT'}</button>
                     </div>
                 </div>
 
@@ -315,7 +323,7 @@ function FormData() {
                                         absetData && absetData.map((item, index) =>
                                             <tr>
                                                 <td>
-                                                    {index +1}
+                                                    {index + 1}
                                                 </td>
                                                 <td>
                                                     {item.Id}
@@ -370,12 +378,16 @@ function FormData() {
                                     </div>
 
 
+                                    {
+                                    Status == "Absent" && 
                                     <div class="row">
                                         <label htmlFor="" className={Reason ? 'col-sm-5 text-uppercase ' : 'col-sm-5 text-uppercase text-danger '}>Reason</label>
                                         <textarea class="col form-control me-4" onChange={(e) => { setReason(e.target.value) }} placeholder="Reason" value={Reason}></textarea>
 
-                                    </div>
+                                    </div> 
+                                    }
                                 </div>
+                               
 
                             </div>
                             <div class="modal-footer">
@@ -389,6 +401,8 @@ function FormData() {
 
                 <ToastContainer />
             </div>
+
+            <button onClick={() => { email() }}>email</button>
 
         </div>
     )

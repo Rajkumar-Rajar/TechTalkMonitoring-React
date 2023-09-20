@@ -8,7 +8,6 @@ const bootstrap_style = {
 
 
 const Employee = [
-    {"Id": 7741, "Name": "Dinesh Rangarajan"},
     {"Id": 7742, "Name": "Javith S"},
     {"Id": 7743, "Name": "Jayasri A"},
     {"Id": 7744, "Name": "Sandeap V"},
