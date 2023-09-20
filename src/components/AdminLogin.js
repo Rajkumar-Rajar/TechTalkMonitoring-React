@@ -18,7 +18,7 @@ function AdminLogin() {
 
         if (userId && userPass) {
             if (userId == 77 && userPass == 77) {
-                toast.success('login user data', {
+                toast.success('loging', {
                     autoClose: 1000,
                     onClose: () => {
                         setTimeout(navigate('/FormData'), 1000);
@@ -41,7 +41,7 @@ function AdminLogin() {
             className={
                 bg_color
                     ? 'container col-9 col-sm-8 col-md-6 col-lg-3 border border-2'
-                    : 'container col-10 col-md-6 col-lg-3 bg-dark'
+                    : 'container col-9 col-sm-8 col-md-6 col-lg-3 bg-dark border border-2'
             }
             style={{ marginTop: '7%' }}
         >
