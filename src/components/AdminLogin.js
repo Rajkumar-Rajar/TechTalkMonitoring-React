@@ -42,8 +42,8 @@ function AdminLogin() {
         <div
             className={
                 bg_color
-                    ? 'container col-9 col-sm-8 col-md-6 col-lg-3 border border-2'
-                    : 'container col-9 col-sm-8 col-md-6 col-lg-3 bg-dark border border-2'
+                    ? 'container col-11 col-sm-8 col-md-6 col-lg-3 border border-2'
+                    : 'container col-11 col-sm-8 col-md-6 col-lg-3 bg-dark border border-2'
             }
             style={{ marginTop: '7%' }}
         >
@@ -58,7 +58,7 @@ function AdminLogin() {
                                 setbg_color(!bg_color);
                             }}
                         /> */}
-                        {bg_color ? <MdOutlineWbSunny className='' onClick={() => { setbg_color(!bg_color) }} /> : <BsMoonStars className='text-light' onClick={() => { setbg_color(!bg_color) }} />}
+                        {bg_color ? <MdOutlineWbSunny className='fs-4' onClick={() => { setbg_color(!bg_color) }} /> : <BsMoonStars className='text-light fs-4' onClick={() => { setbg_color(!bg_color) }} />}
 
                     </div>
 
@@ -155,7 +155,7 @@ function AdminLogin() {
                     </form>
                 </div>
 
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center mt-5 mb-3">
                     <button
                         type="submit"
                         class="btn btn-primary"

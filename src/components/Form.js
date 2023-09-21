@@ -92,12 +92,12 @@ function Form() {
         <div
             className={
                 bg_color
-                    ? 'container col-10 col-sm-8 col-md-6 col-lg-3 border border-2'
-                    : 'container col-10 col-sm-8 col-md-6 col-lg-3 bg-dark border border-2'
+                    ? 'container col-11 col-sm-8 col-md-6 col-lg-3 border border-2'
+                    : 'container col-11 col-sm-8 col-md-6 col-lg-3 bg-dark border border-2'
             }
             style={{ marginTop: '4%' }}
         >
-            <div className="p-sm-4">
+            <div className="p-sm-4 p-4">
                 <div className="row">
                     <div class="col-auto ms-auto form-check form-switch d-flex justify-content-end my-3 d-flex align-items-center">
                         {/* <input
@@ -106,7 +106,7 @@ function Form() {
                             id="flexSwitchCheckChecked"
                             onClick={() => {setbg_color(!bg_color) }}
                         /> */}
-                      {bg_color ?  <MdOutlineWbSunny  className=''  onClick={() => {setbg_color(!bg_color) }}/> : <BsMoonStars  className='text-light'  onClick={() => {setbg_color(!bg_color) }}/> }
+                      {bg_color ?  <MdOutlineWbSunny  className='fs-4'  onClick={() => {setbg_color(!bg_color) }}/> : <BsMoonStars  className='text-light fs-4'  onClick={() => {setbg_color(!bg_color) }}/> }
                     </div>
 
                     <div class="col-auto form-check form-switch d-flex justify-content-end my-3">
@@ -290,7 +290,7 @@ function Form() {
                     </div>
                 )}
 
-                <div className="d-flex justify-content-center mb-2">
+                <div className="d-flex justify-content-center my-5">
                     <button
                         type="submit"
                         class="btn btn-primary"

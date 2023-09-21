@@ -4,7 +4,7 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import emailjs from 'emailjs-com';
-import { useHistory } from 'react-router-dom';
+import { useHistory,useNavigate } from 'react-router-dom';
 
 import Employee from './style';
 
@@ -163,7 +163,7 @@ function FormData() {
                             <li class="nav-item">
                                 <Link to="/">
                                     <button className='col btn px-5 me-3 btn-outline-info text-capitalize'>
-                                        back
+                                        Logout
                                     </button>
                                 </Link>
                             </li>
@@ -203,10 +203,12 @@ function FormData() {
                             />}
                     </div>
                     <div className="col-sm-auto">
-                        <button className='btn btn-warning text-capitalize' data-bs-toggle="collapse" data-bs-target="#collapseExample">unregistered</button>
+                        <a href="#unregistered">
+                            <button className='btn btn-warning text-capitalize' data-bs-toggle="collapse" data-bs-target="#collapseExample">unregistered</button>
+                        </a>
                     </div>
                     <div className="col-sm-auto">
-                        <button className='btn btn-success px-5' onClick={() => { setShow(!show) }}>{show ?'UPDATE' :'EDIT'}</button>
+                        <button className='btn btn-success px-5' onClick={() => { setShow(!show) }}>{show ? 'UPDATE' : 'EDIT'}</button>
                     </div>
                 </div>
 
@@ -309,7 +311,7 @@ function FormData() {
                                 />
                             </div>
                             <table id="table-to-xlss" class="table table-hover">
-                                <thead className='text-uppercase'>
+                                <thead className='text-uppercase' id="unregistered">
 
                                     <tr className='text-info'>
                                         <th>ID</th>
@@ -318,10 +320,10 @@ function FormData() {
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody >
                                     {
                                         absetData && absetData.map((item, index) =>
-                                            <tr>
+                                            <tr >
                                                 <td>
                                                     {index + 1}
                                                 </td>
@@ -338,7 +340,7 @@ function FormData() {
                             </table>
                         </div>
                     </div>
-                </div>
+                </div >
 
 
 
@@ -379,15 +381,15 @@ function FormData() {
 
 
                                     {
-                                    Status == "Absent" && 
-                                    <div class="row">
-                                        <label htmlFor="" className={Reason ? 'col-sm-5 text-uppercase ' : 'col-sm-5 text-uppercase text-danger '}>Reason</label>
-                                        <textarea class="col form-control me-4" onChange={(e) => { setReason(e.target.value) }} placeholder="Reason" value={Reason}></textarea>
+                                        Status == "Absent" &&
+                                        <div class="row">
+                                            <label htmlFor="" className={Reason ? 'col-sm-5 text-uppercase ' : 'col-sm-5 text-uppercase text-danger '}>Reason</label>
+                                            <textarea class="col form-control me-4" onChange={(e) => { setReason(e.target.value) }} placeholder="Reason" value={Reason}></textarea>
 
-                                    </div> 
+                                        </div>
                                     }
                                 </div>
-                               
+
 
                             </div>
                             <div class="modal-footer">
@@ -402,7 +404,7 @@ function FormData() {
                 <ToastContainer />
             </div>
 
-            <button onClick={() => { email() }}>email</button>
+            {/* <button onClick={() => { email() }}>email</button> */}
 
         </div>
     )
