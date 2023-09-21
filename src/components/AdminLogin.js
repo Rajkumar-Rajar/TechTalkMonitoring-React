@@ -4,8 +4,9 @@ import bootstrap_style from './style';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-import { BsMoonStars} from "react-icons/bs";
-import { MdOutlineWbSunny} from "react-icons/md";
+import { BsMoonStars } from "react-icons/bs";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { GiVikingHelmet } from "react-icons/gi";
 
 function AdminLogin() {
     const navigate = useNavigate();
@@ -166,12 +167,15 @@ function AdminLogin() {
                         Submit
                     </button>
                 </div>
-                        <p class="text-capitalized text-center text-secondary">Technology and Innovation</p>
+                <div className="">
+                    <p class="text-center text-secondary"><GiVikingHelmet className='fs-4' /></p>
+                    <p class="text-capitalized text-center text-secondary">Technology and Innovation</p>
+                </div>
 
                 <ToastContainer />
             </div>
         </div>
-    );
+    )
 }
 
 export default AdminLogin;

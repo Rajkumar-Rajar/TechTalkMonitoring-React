@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FormData from './FormData';
-import { BsMoonStars} from "react-icons/bs";
-import { MdOutlineWbSunny} from "react-icons/md";
+import { BsMoonStars } from "react-icons/bs";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { GiVikingHelmet } from "react-icons/gi";
 import { Link } from 'react-router-dom';
 function Form() {
     const [bg_color, setbg_color] = useState(true);
@@ -26,57 +27,58 @@ function Form() {
             .then((res) => (setData(res),
                 console.log(res)
             ))
-    },[])
+    }, [])
 
     // https://6502bc67a0f2c1f3faeac85b.mockapi.io/talk
 
     const apiCall = async () => {
         setsubmite_validation(true);
 
-        if (name && emp_id && status ) {
+        if (name && emp_id && status) {
 
 
             const chech_emp = await data.filter((item) =>
-               parseInt(item.emp_id) == parseInt(emp_id)
+                parseInt(item.emp_id) == parseInt(emp_id)
             )
 
-            if(chech_emp[0]){
+            if (chech_emp[0]) {
                 toast.error("already-registered",
-                 { autoClose: 1000,
-                    onClose: () => {
-                    window.location.reload();
-                },
-             })
-              
-            }
-            else{
-              const post_data = {
-                method: 'POST',
-
-                body: JSON.stringify({
-                    name: name,
-                    emp_id: emp_id,
-                    status: status,
-                    reason: reason ?reason :"Network issue",
-                }),
-
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            };
-
-            fetch('https://6502bc67a0f2c1f3faeac85b.mockapi.io/talk', post_data)
-                .then((res) => res.json())
-                .then((res) => {
-                    toast.success('submited', {
+                    {
                         autoClose: 1000,
-                        onClose: () => 
-                           ( window.location.reload() )
+                        onClose: () => {
+                            window.location.reload();
+                        },
+                    })
+
+            }
+            else {
+                const post_data = {
+                    method: 'POST',
+
+                    body: JSON.stringify({
+                        name: name,
+                        emp_id: emp_id,
+                        status: status,
+                        reason: reason ? reason : "Network issue",
+                    }),
+
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                };
+
+                fetch('https://6502bc67a0f2c1f3faeac85b.mockapi.io/talk', post_data)
+                    .then((res) => res.json())
+                    .then((res) => {
+                        toast.success('submited', {
+                            autoClose: 1000,
+                            onClose: () =>
+                                (window.location.reload())
+                        });
+                    })
+                    .catch((error) => {
+                        toast.error('not submited', { autoClose: 1000 });
                     });
-                })
-                .catch((error) => {
-                    toast.error('not submited', { autoClose: 1000 });
-                });
             }
 
 
@@ -106,7 +108,7 @@ function Form() {
                             id="flexSwitchCheckChecked"
                             onClick={() => {setbg_color(!bg_color) }}
                         /> */}
-                      {bg_color ?  <MdOutlineWbSunny  className='fs-4'  onClick={() => {setbg_color(!bg_color) }}/> : <BsMoonStars  className='text-light fs-4'  onClick={() => {setbg_color(!bg_color) }}/> }
+                        {bg_color ? <MdOutlineWbSunny className='fs-4' onClick={() => { setbg_color(!bg_color) }} /> : <BsMoonStars className='text-light fs-4' onClick={() => { setbg_color(!bg_color) }} />}
                     </div>
 
                     <div class="col-auto form-check form-switch d-flex justify-content-end my-3">
@@ -135,7 +137,7 @@ function Form() {
                     </div>
                 </div>
 
-                
+
                 <div className="my-3">
                     <label
                         for="exampleFormControlInput1"
@@ -147,7 +149,7 @@ function Form() {
                     >
                         Employee ID
                     </label>
-                    
+
                     <form class="form-floating">
                         <input
                             type="number"
@@ -290,7 +292,7 @@ function Form() {
                     </div>
                 )}
 
-                <div className="d-flex justify-content-center my-5">
+                <div className="d-flex justify-content-center mt-3 mb-1">
                     <button
                         type="submit"
                         class="btn btn-primary"
@@ -300,8 +302,13 @@ function Form() {
                     >
                         Submit
                     </button>
+
                 </div>
-                <p class="text-capitalized text-center text-secondary">Technology and Innovation</p>
+                <div className="">
+                    <p class="text-center text-secondary"><GiVikingHelmet className='fs-4' /></p>
+                    <p class="text-capitalized text-center text-secondary">Technology and Innovation</p>
+                </div>
+
 
                 <ToastContainer />
             </div>

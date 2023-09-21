@@ -48,15 +48,6 @@ function FormData() {
 
 
 
-
-    const email = () => {
-
-        alert("p")
-        const subject = "user data employee"
-        const body = data
-        window.location.href = `mailto:mtrsecondary@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }
-
     const clear_data = () => {
 
         const ok = confirm("you want clear data")
@@ -70,6 +61,7 @@ function FormData() {
             }
 
             for (var i = 0; i < data.length; i++) {
+
                 fetch(`https://6502bc67a0f2c1f3faeac85b.mockapi.io/talk/${data[i].id}`, delete_data)
             }
             toast.success("deleted", {
@@ -162,7 +154,7 @@ function FormData() {
                         <ul class="text-capitalize ms-auto  navbar-nav mb-2 mb-lg-0 gap-2 gap-sm-0">
                             {!show &&
                                 <li class="nav-item">
-                                    <button onClick={() => { clear_data() }} className='btn px-4 me-3 btn-outline-danger text-capitalize'>
+                                    <button onClick={() => { clear_data() }} className='btn px-4 me-3 btn-outline-secondary text-capitalize'>
                                         clear data
                                     </button>
                                 </li>
@@ -207,7 +199,7 @@ function FormData() {
                             />}
                     </div>
                     <div className="col-sm-auto my-2 my-sm-0">
-                        <button className='btn btn-warning text-capitalize px-3' data-bs-toggle="collapse" data-bs-target="#collapseExample">unregistered</button>
+                        <button className='btn btn-secondary text-capitalize px-3' data-bs-toggle="collapse" data-bs-target="#collapseExample">unregistered</button>
                     </div>
 
                     <div className="ms-sm-auto col-sm-auto me-md-3">
@@ -406,8 +398,6 @@ function FormData() {
 
                 <ToastContainer />
             </div>
-
-            {/* <button onClick={() => { email() }}>email</button> */}
 
         </div>
     )
