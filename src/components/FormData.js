@@ -4,7 +4,7 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import emailjs from 'emailjs-com';
-import { useHistory,useNavigate } from 'react-router-dom';
+import { useHistory, useNavigate } from 'react-router-dom';
 
 import Employee from './style';
 
@@ -160,6 +160,13 @@ function FormData() {
                     <div class="collapse navbar-collapse " id="navbarSupportedContent">
 
                         <ul class="text-capitalize ms-auto  navbar-nav mb-2 mb-lg-0 gap-2 gap-sm-0">
+                            {!show &&
+                                <li class="nav-item">
+                                    <button onClick={() => { clear_data() }} className='btn px-4 me-3 btn-outline-danger text-capitalize'>
+                                        clear data
+                                    </button>
+                                </li>
+                            }
                             <li class="nav-item">
                                 <Link to="/">
                                     <button className='col btn px-5 me-3 btn-outline-info text-capitalize'>
@@ -167,11 +174,7 @@ function FormData() {
                                     </button>
                                 </Link>
                             </li>
-                            <li class="nav-item">
-                                <button onClick={() => { clear_data() }} className='btn px-4 me-3 btn-outline-danger text-capitalize'>
-                                    clear data
-                                </button>
-                            </li>
+
                             {/* <li class="nav-item">
                                 <ReactHTMLTableToExcel
                                     id="test-table-xls-button"
@@ -191,7 +194,8 @@ function FormData() {
 
 
                 <div className="row">
-                    <div className="ms-sm-auto col-auto">
+
+                    <div className=" col-auto">
                         {!show
                             && <ReactHTMLTableToExcel
                                 id="test-table-xls-button"
@@ -202,12 +206,11 @@ function FormData() {
                                 buttonText="export to excel"
                             />}
                     </div>
-                    <div className="col-sm-auto">
-                        <a href="#unregistered">
-                            <button className='btn btn-warning text-capitalize' data-bs-toggle="collapse" data-bs-target="#collapseExample">unregistered</button>
-                        </a>
+                    <div className="col-sm-auto my-2 my-sm-0">
+                        <button className='btn btn-warning text-capitalize px-3' data-bs-toggle="collapse" data-bs-target="#collapseExample">unregistered</button>
                     </div>
-                    <div className="col-sm-auto">
+
+                    <div className="ms-sm-auto col-sm-auto me-md-3">
                         <button className='btn btn-success px-5' onClick={() => { setShow(!show) }}>{show ? 'UPDATE' : 'EDIT'}</button>
                     </div>
                 </div>
