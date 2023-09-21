@@ -187,7 +187,7 @@ function FormData() {
 
                 <div className="row">
 
-                    <div className=" col-auto">
+                    <div className="ms-sm-auto col-auto">
                         {!show
                             && <ReactHTMLTableToExcel
                                 id="test-table-xls-button"
@@ -202,7 +202,7 @@ function FormData() {
                         <button className='btn btn-secondary text-capitalize px-3' data-bs-toggle="collapse" data-bs-target="#collapseExample">unregistered</button>
                     </div>
 
-                    <div className="ms-sm-auto col-sm-auto me-md-3">
+                    <div className=" col-sm-auto me-md-3">
                         <button className='btn btn-success px-5' onClick={() => { setShow(!show) }}>{show ? 'UPDATE' : 'EDIT'}</button>
                     </div>
                 </div>
