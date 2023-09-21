@@ -4,13 +4,13 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import emailjs from 'emailjs-com';
+import { useHistory } from 'react-router-dom';
 
 import Employee from './style';
 
 import { Link } from 'react-router-dom';
 function FormData() {
-
-
+    // const history = useHistory()
 
 
     const [data, setData] = useState([])

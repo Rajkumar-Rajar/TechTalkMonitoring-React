@@ -4,6 +4,8 @@ import bootstrap_style from './style';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { BsMoonStars} from "react-icons/bs";
+import { MdOutlineWbSunny} from "react-icons/md";
 
 function AdminLogin() {
     const navigate = useNavigate();
@@ -48,14 +50,16 @@ function AdminLogin() {
             <div className="p-sm-4">
                 <div className="row">
                     <div class="col-auto ms-auto form-check form-switch d-flex justify-content-end my-3 d-flex align-items-center">
-                        <input
+                        {/* <input
                             class="form-check-input"
                             type="checkbox"
                             id="flexSwitchCheckChecked"
                             onClick={() => {
                                 setbg_color(!bg_color);
                             }}
-                        />
+                        /> */}
+                        {bg_color ? <MdOutlineWbSunny className='' onClick={() => { setbg_color(!bg_color) }} /> : <BsMoonStars className='text-light' onClick={() => { setbg_color(!bg_color) }} />}
+
                     </div>
 
                     <div class="col-auto form-check form-switch d-flex justify-content-end my-3">

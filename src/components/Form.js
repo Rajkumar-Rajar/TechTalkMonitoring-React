@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FormData from './FormData';
-
+import { BsMoonStars} from "react-icons/bs";
+import { MdOutlineWbSunny} from "react-icons/md";
 import { Link } from 'react-router-dom';
 function Form() {
     const [bg_color, setbg_color] = useState(true);
@@ -40,7 +41,13 @@ function Form() {
             )
 
             if(chech_emp[0]){
-                toast.error("already-registered", { autoClose: 1000 })
+                toast.error("already-registered",
+                 { autoClose: 1000,
+                    onClose: () => {
+                    window.location.reload();
+                },
+             })
+              
             }
             else{
               const post_data = {
@@ -63,9 +70,8 @@ function Form() {
                 .then((res) => {
                     toast.success('submited', {
                         autoClose: 1000,
-                        onClose: () => {
-                            window.location.reload();
-                        },
+                        onClose: () => 
+                           ( window.location.reload() )
                     });
                 })
                 .catch((error) => {
@@ -94,14 +100,13 @@ function Form() {
             <div className="p-sm-4">
                 <div className="row">
                     <div class="col-auto ms-auto form-check form-switch d-flex justify-content-end my-3 d-flex align-items-center">
-                        <input
+                        {/* <input
                             class="form-check-input"
                             type="checkbox"
                             id="flexSwitchCheckChecked"
-                            onClick={() => {
-                                setbg_color(!bg_color);
-                            }}
-                        />
+                            onClick={() => {setbg_color(!bg_color) }}
+                        /> */}
+                      {bg_color ?  <MdOutlineWbSunny  className=''  onClick={() => {setbg_color(!bg_color) }}/> : <BsMoonStars  className='text-light'  onClick={() => {setbg_color(!bg_color) }}/> }
                     </div>
 
                     <div class="col-auto form-check form-switch d-flex justify-content-end my-3">
@@ -130,6 +135,7 @@ function Form() {
                     </div>
                 </div>
 
+                
                 <div className="my-3">
                     <label
                         for="exampleFormControlInput1"
@@ -141,9 +147,7 @@ function Form() {
                     >
                         Employee ID
                     </label>
-                    {/* <label for="exampleFormControlInput1" class="form-label text-uppercase fw-bolder">Employee ID</label> */}
-
-                    {/* submite_validation ? "form-control" : "form-control is-invalid" */}
+                    
                     <form class="form-floating">
                         <input
                             type="number"
