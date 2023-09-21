@@ -166,6 +166,8 @@ function AdminLogin() {
                         Submit
                     </button>
                 </div>
+                        <p class="text-capitalized text-center text-secondary">Technology and Innovation</p>
+
                 <ToastContainer />
             </div>
         </div>
